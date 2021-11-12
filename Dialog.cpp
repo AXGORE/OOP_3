@@ -7,17 +7,17 @@ namespace p3 {
 	int dialog(elem& el, int& len) {
 		int a;
 		int help;
-		const char* opt[] = { "1.Add Par", "2.Add Elem" ,"3.Show Elem","4.Show Queue","5.Del Elem","6.Check", "7.Exit","8.Add Que"};
-		for (int i = 0; i < 8; i++) {
+		const char* opt[] = { "1.Add Par", "2.Add Que" ,"3.Show Elem","4.Show Queue","5.Del Elem","6.Check", "7.Exit"};
+		for (int i = 0; i < 7; i++) {
 			std::cout << opt[i] << std::endl;
 		}
 		std::cout << "Choose one option" << std::endl;
 		help = getNum(a, "int");
 		if (help == -1) { return 7; }
-		if ((a < 1 || a>8)) {
+		if ((a < 1 || a>7)) {
 			std::cout << "Error, try again" << std::endl;
 		}
-		while (a < 1 || a>8) {
+		while (a < 1 || a>7) {
 			help = getNum(a, "int");
 			if (help == -1) { return 7; }
 			if ((a < 1 && a>8)) {
@@ -30,28 +30,14 @@ namespace p3 {
 			return 1;
 		}
 		if (a == 2) {
-			std::cin >> el;
-			return 2;
-		}
-		if (a == 3) { return a; }
-		if (a == 4) { return a; }
-		if (a == 5) { return a; }
-		if (a == 6) { return a; }
-		if (a == 8) { 
 			help = getNum(len, "int");
 			if (help == -1) { return 7; }
 			return a;
 		}
-		return 7;
+		else { return a; }
 	}
 	void ch(elem& el, int& a, int num, Que& q) {
 		if (num == 1) {
-			try {
-				q.New_mem(0);
-			}
-			catch (const std::bad_alloc& ba) {
-				std::cout << "Error:" << ba.what() << std::endl;
-			}
 			try {
 				q += el;
 			}
@@ -61,14 +47,9 @@ namespace p3 {
 			return;
 		}
 		if (num == 2) {
+		    q.Set_l(a);
 			try {
-				q.New_mem(0);
-			}
-			catch (const std::bad_alloc& ba) {
-				std::cout << "Error:" << ba.what() << std::endl;
-			}
-			try {
-				q.AddElem(el);
+				std::cin >> q;
 			}
 			catch (const std::exception& e) {
 				std::cout << e.what() << std::endl;
@@ -105,22 +86,9 @@ namespace p3 {
 			return;
 		}
 		if (num == 6) {
-			q.Ch(q.Check());
-			return;
-		}
-		if (num == 8) {
-			try {
-				q.New_mem(a);
-			}
-			catch (const std::bad_alloc& ba) {
-				std::cout << "Error:" << ba.what() << std::endl;
-			}
-			try {
-				std::cin >> q;
-			}
-			catch (const std::exception& e) {
-				std::cout << e.what() << std::endl;
-			}
+			const char* s;
+			s=q.Ch(q);
+			std::cout << s << std::endl;
 			return;
 		}
 	}

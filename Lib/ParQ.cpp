@@ -3,14 +3,6 @@
 #include <stdexcept>
 
 namespace p3 {
-	void Que::AddElem(elem el) {
-		if (len < l) {
-			mas[len]=el;
-			len++;
-			return;
-		}
-		throw std::out_of_range("Queue is full");
-	};
 	void Que::DelElem(elem& a) {
 		if (len == 0) { throw std::out_of_range("Queue is empty"); } //catch (const std::exception& e)
 		a = mas[0];
@@ -25,18 +17,13 @@ namespace p3 {
 		std::cout << mas[0];
 		return;
 	}
-	bool Que::Check() const {
-		if (len == 0) { return false; }
-		return true;
-	}
-	void Que::Ch(bool x) const {
+	const char* Que::Ch(bool x) const {
 		if (x == false) {
-			std::cout << "Empty" << std::endl;
+			return "Empty";
 		}
 		else {
-			std::cout << "Not Empty" << std::endl;
+			return "Not Empty";
 		}
-		return;
 	}
 	void Que::New_mem(int a) {
 		if (a == 0) { a = len + 1; }

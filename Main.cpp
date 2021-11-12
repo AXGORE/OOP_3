@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../Par_Queue/ParQ.h"
-#include "Dialog.h"
 #pragma comment (lib,"../Par_Queue/Debug/Par_Queue")
+#include "Dialog.h"
 #define __CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
 #define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
